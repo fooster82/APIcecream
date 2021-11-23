@@ -10,7 +10,7 @@ CORS(app)
 def home():
     return jsonify({'message': 'Hello from APIcecream!'}), 200
 
-@app.route('/icecream/facts', methods=['GET', 'POST'])
+@app.route('/facts', methods=['GET', 'POST'])
 def facts_handler():
     fns = {
         'GET': icecreams.index,
@@ -19,7 +19,7 @@ def facts_handler():
     resp, code = fns[request.method](request)
     return jsonify(resp), code
 
-@app.route('/icecream/facts/<int:fact_id>', methods=['GET', 'DELETE'])
+@app.route('/facts/<int:fact_id>', methods=['GET', 'DELETE'])
 def fact_handler(fact_id):
     fns = {
         'GET': icecreams.show,
