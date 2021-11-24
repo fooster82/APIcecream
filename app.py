@@ -2,19 +2,19 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from controllers import icecreams
 from werkzeug import exceptions
-# from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-# db = SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+db = SQLAlchemy(app)
 CORS(app)
 
-# class Fact(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     fact = db.Column(db.String(200), unique=True, nullable=False)
+class Fact(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    fact = db.Column(db.String(200), unique=True, nullable=False)
 
-#     def __repr__(self):
-#         return f'{self.id}.{self.fact}'
+    def __repr__(self):
+        return f'{self.id}.{self.fact}'
 
 @app.route('/')
 def home():
