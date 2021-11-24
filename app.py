@@ -2,19 +2,19 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from controllers import icecreams
 from werkzeug import exceptions
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ktavufjgoolrqq:547c39116bb6e3e5e27577c64d507d62880aeadb48ae28eaaec06565d5df80d1@ec2-3-230-82-215.compute-1.amazonaws.com:5432/d2jot7odnbm4uh'
-db = SQLAlchemy(app)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ktavufjgoolrqq:547c39116bb6e3e5e27577c64d507d62880aeadb48ae28eaaec06565d5df80d1@ec2-3-230-82-215.compute-1.amazonaws.com:5432/d2jot7odnbm4uh'
+# db = SQLAlchemy(app)
 CORS(app)
 
-class Fact(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    fact = db.Column(db.String(200), unique=True, nullable=False)
+# class Fact(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     fact = db.Column(db.String(200), unique=True, nullable=False)
 
-    def __repr__(self):
-        return f'{self.id}.{self.fact}'
+#     def __repr__(self):
+#         return f'{self.id}.{self.fact}'
 
 @app.route('/')
 def home():
